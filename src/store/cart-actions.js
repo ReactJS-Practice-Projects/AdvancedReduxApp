@@ -20,6 +20,10 @@ export const fetchCartData = () => {
     try {
       const cartData = await fetchData();
       dispatch(
+        //here we replace the code cartActions.replaceCart(cartData) with the object 
+        //we do it to prevent undefinied error when the cart is empty. 
+        //that's why we pass cart item or empty array []
+        //items: cartData.items || [] - this code acts as a condition if the cart items is are undefied then it takes empty array []
         cartActions.replaceCart({
           items: cartData.items || [],
           totalQuantity: cartData.totalQuantity,
@@ -52,6 +56,7 @@ export const sendCartData = (cart) => {
         'https://react-http-6b4a6.firebaseio.com/cart.json',
         {
           method: 'PUT',
+          //here we changed data we sent from the "cart" to the actual object so that we don't send changed variable with it 
           body: JSON.stringify({
             items: cart.items,
             totalQuantity: cart.totalQuantity,

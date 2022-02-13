@@ -25,6 +25,8 @@ function App() {
       return;
     }
 
+    //here we create "changed" variable to prevent cart from sending cart data 
+    //when component is loaded for the first time
     if (cart.changed) {
       dispatch(sendCartData(cart));
     }
