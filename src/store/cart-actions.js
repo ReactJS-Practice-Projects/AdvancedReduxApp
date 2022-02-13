@@ -3,6 +3,7 @@ import { cartActions } from './cart-slice';
 
 export const fetchCartData = () => {
   return async (dispatch) => {
+    //here we add asynchronous function to do try catch blocks after fetch
     const fetchData = async () => {
       const response = await fetch(
         'https://react-http-6b4a6.firebaseio.com/cart.json'
